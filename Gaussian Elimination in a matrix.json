@@ -1,0 +1,117 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "name": "python",
+      "display_name": "Python (Pyodide)",
+      "language": "python"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "python",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.8"
+    }
+  },
+  "nbformat_minor": 5,
+  "nbformat": 4,
+  "cells": [
+    {
+      "id": "0cd23d6b-a28f-4f6b-9b1e-8efe881ef9d0",
+      "cell_type": "code",
+      "source": "A = [[1,2,3],\n     [2,3,4],\n     [3,4,5]]\n\npivot_row = 0 \npivot_column = 0\npivot = A[pivot_row][pivot_column]\nprint(pivot)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "1\n"
+        }
+      ],
+      "execution_count": 29
+    },
+    {
+      "id": "b4bb2c22-47b7-4a2b-9f97-7345e5107ed7",
+      "cell_type": "code",
+      "source": "random = A[1][2]\nprint(random)\n",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "4\n"
+        }
+      ],
+      "execution_count": 30
+    },
+    {
+      "id": "771ec36e-be20-4f95-b66c-3aaa005b8462",
+      "cell_type": "markdown",
+      "source": "A is basically approached by the indexes. The list has futher lists in it which needs to be approached step wise. Since im dealing with the concept of matrix. Intuitively im looking at it as a matrix but coding wise these are just lists getting approached by using indexes. \n\nA[1][2] here means A's first list is approached by [1] further the third element of the list is approached by it's index [2]. Intuitively we are considering it rows and columns but in code these are lists. \n\nThis is how matrices are represented in pure python \n\nmatrix[row][column]\n\nBelow, im about to do elimination by evaluating the factor required to eliminate 2 below pivot 1. Computer needs to be told what i can do by just seeing the matrix\n\nA = [[1,2,3],\n     [2,3,4],\n     [3,4,5]]\n     ",
+      "metadata": {}
+    },
+    {
+      "id": "1b61681d-71d2-4557-9842-4c4fec9cf4d3",
+      "cell_type": "code",
+      "source": "\nbelow = A[1][0]\nfactor = below/pivot\nprint(factor)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "2.0\n"
+        }
+      ],
+      "execution_count": 31
+    },
+    {
+      "id": "5bad9b54-17b3-4d1c-a38a-ba91923f90a4",
+      "cell_type": "markdown",
+      "source": "int(factor) breaks the maths here, if factor is 1.3, it may give 1 and that's wrong. so instead of applying int, round off to get int value",
+      "metadata": {}
+    },
+    {
+      "id": "068cc395-cc38-428b-89de-0a5df9baa5c8",
+      "cell_type": "code",
+      "source": "A[1][0] = A[1][0]-(factor* A[0][0])\nA[1][1] = A[1][1]-(factor* A[0][1])\nA[1][2] = A[1][2]-(factor* A[0][2])\nprint(A[1])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "[0.0, -1.0, -2.0]\n"
+        }
+      ],
+      "execution_count": 33
+    },
+    {
+      "id": "5104a9da-42e7-4fcf-b840-b39ea7006762",
+      "cell_type": "code",
+      "source": "print(A)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "[[1, 2, 3], [0.0, -1.0, -2.0], [3, 4, 5]]\n"
+        }
+      ],
+      "execution_count": 34
+    }
+  ]
+}
